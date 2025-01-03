@@ -1,0 +1,812 @@
+/* General Styles */
+:root {
+    --primary-color: #2563eb;
+    --background-color: #f1f5f9;
+    --card-background: #ffffff;
+    --text-primary: #1d4041;
+    --text-secondary: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+}
+
+
+/* Date & Timestamp Size */
+h2 small {
+    font-size: 0.85rem; 
+    color: #555; 
+    font-weight: normal; 
+    margin-left: 5px;
+}
+
+
+/* Navbar styles */
+.navbar {
+    background-color: #f3f2e9;
+    color: #1d4041;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+}
+
+.nav-content h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+
+.home-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px; /* Space between icon and text */
+    fill: #1d4041; /* Ensure the SVG icon inherits this color */
+}
+
+
+/* Dashboard Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Section Header */
+.dashboard-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dashboard-header h2 {
+    font-size: 1.5rem;
+    color: #1e293b; /* Match navbar for title text */
+}
+
+.dashboard-header .subtitle {
+    font-size: 0.9rem;
+    color: #64748b; /* Subtle gray/blue */
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Cards */
+.card {
+    height: 150px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff, #e6e9f0); /* Subtle gradient for card */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Content */
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 41, 59, 0.9); /* Semi-transparent dark overlay */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f1f5f9; /* Light text */
+}
+
+/* Section Divider */
+.section-divider {
+    margin: 40px 0;
+    text-align: center;
+    position: relative;
+    color: #1d4041;
+}
+
+.section-divider .divider-text {
+    background: #f3f2e9; /* Match background */
+    padding: 0 10px;
+    font-size: 1rem;
+    color: #1d4041; /* Subtle gray/blue */
+}
+
+.section-divider:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    z-index: -1;
+    color: #1d4041;
+}
+
+/* Add colored lines on both sides of the text */
+.section-divider::before,
+.section-divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 2px; /* Thickness of the line */
+    background-color: #1d4041; /* Line color */
+}
+
+.section-divider::before {
+    left: 0;
+}
+
+.section-divider::after {
+    right: 0;
+}
+
+
+
+
+
+
+
+/* Status Grid for Services Running and Stopped */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.running, .stopped {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.running {
+    background-color: #e0ffe0;
+}
+
+.running h2 {
+    color: green;
+    font-size: 1.5rem;
+}
+
+.stopped {
+    background-color: #ffe0e0;
+}
+
+.stopped h2 {
+    color: red;
+    font-size: 1.5rem;
+}
+
+
+/* Server Section */
+.server-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Service Card Styling */
+.service-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: monospace; /* Monospace for code-like appearance */
+    font-size: 14px;
+    margin-bottom: 15px;
+    table-layout: fixed; /* Consistent column widths */
+}
+
+.service-card table td {
+    padding: 5px 10px; /* Consistent spacing inside cells */
+    border: none; /* Clean look without borders */
+}
+
+/* Table Column Alignment */
+.service-card table td:first-child {
+    text-align: left; /* Align labels */
+    width: 20%; /* Fixed width for first column */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.service-card table td:nth-child(2) {
+    text-align: center; /* Align the colon */
+    padding-left: 0; /* Adjust spacing before the colon */
+    padding-right: 6px; /* Adjust spacing after the colon */
+    width: 5%; /* Fixed width for consistent alignment */
+}
+
+.service-card table td:last-child {
+    text-align: left; /* Align text after the colon */
+    width: 60%; /* Flexible width for the last column */
+}
+
+/* Row Spacing */
+.service-card table tr {
+    padding: 5px 0; /* Space between rows */
+    vertical-align: top; /* Ensure proper vertical alignment */
+}
+
+/* Hover Effects for Cards */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* For Smaller Screens */
+@media (max-width: 1024px) {
+    .status-grid {
+        grid-template-columns: 1fr; /* Single-column grid for smaller devices */
+        gap: 8px; /* Reduced gap between sections */
+    }
+
+    .navbar h1 {
+        font-size: 1.2rem; /* Adjust navbar font size */
+    }
+
+    .running, .stopped {
+        padding: 12px; /* Adjust padding */
+        margin: 6px 0; /* Minimal gap between sections */
+    }
+}
+
+/* For Tablets */
+@media (max-width: 768px) {
+    .status-grid {
+        grid-template-columns: 1fr; /* Single column for tablets */
+        gap: 6px; /* Further reduced gap for tablets */
+    }
+
+    .service-card {
+        margin: 6px auto; /* Adjusted margin for better spacing */
+        width: 90%; /* Adjust card width */
+    }
+
+    .navbar h1 {
+        font-size: 1.1rem; /* Smaller navbar text */
+    }
+
+    .running, .stopped {
+        padding: 10px; /* Compact padding */
+        margin: 4px 0; /* Minimal gap between sections */
+    }
+}
+
+/* For Mobile Phones */
+@media (max-width: 480px) {
+    .status-grid {
+        padding: 6px; /* Reduced padding for mobile */
+        grid-template-columns: 1fr;
+        gap: 4px; /* Minimal gap between sections */
+    }
+
+    .service-card {
+        margin: 4px auto;
+        width: 100%; /* Full width on mobile */
+    }
+
+    .navbar h1 {
+        font-size: 1rem;
+    }
+
+    .home-icon {
+        width: 16px; /* Adjust icon size */
+        height: 16px;
+    }
+
+    .running, .stopped {
+        padding: 6px; /* Slightly reduced padding for compactness */
+        margin: 2px 0; /* Minimal space between sections */
+    }
+
+    h2 {
+        font-size: 1rem; /* Slightly smaller header font */
+    }
+
+    .divider {
+        margin: 3px 0; /* Minimal space for dividers */
+    }
+}
+
+
+
+
+
+
+
+index.html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Status Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1>Service Status Dashboard</h1>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container">
+        <!-- Core Applications Section -->
+        <div class="section-divider">
+            <span class="divider-text"> Core Business Applications</span>
+        </div>
+
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card" onclick="navigateTo('apps/focus.html')" style="background-image: url('img/focus-bg.jpg');">
+                <div class="card-content">
+                    <h3>Focus</h3>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card" onclick="navigateTo('apps/g360_web.html')" style="background-image: url('img/g360-web-bg.jpg');">
+                <div class="card-content">
+                    <h3>G360 Web</h3>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card" onclick="navigateTo('apps/g360_app_net.html')" style="background-image: url('img/g360-app-bg.jpg');">
+                <div class="card-content">
+                    <h3>G360 App Net</h3>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card" onclick="navigateTo('apps/sales.html')" style="background-image: url('img/sales-bg.jpg');">
+                <div class="card-content">
+                    <h3>Sales</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <span class="divider-text"> Mortgage Applications</span>
+        </div>
+
+        <!-- Support Applications Section -->
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card" onclick="navigateTo('apps/2fa.html')" style="background-image: url('img/2fa-bg.jpg');">
+                <div class="card-content">
+                    <h3>2FA</h3>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card" onclick="navigateTo('apps/mso.html')" style="background-image: url('img/mso-bg.jpg');">
+                <div class="card-content">
+                    <h3>MSO</h3>
+                </div>
+            </div>
+            <!-- Card 3 -->
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+focus.html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus - Service Status</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1>
+                <a href="../index.html" class="home-link">
+                    <img src="../img/home.svg" alt="Home" class="home-icon">
+                </a>
+                    Focus Services
+               
+            </h1>
+        </div>
+    </nav>
+    
+
+
+    <div class="status-grid">
+        <!-- Running Services -->
+        <div class="running">
+            <h2 id="running-title">Running Services</h2>
+            <br>
+            <br>
+            <div id="running-services"></div>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="divider"></div>
+
+        <!-- Stopped Services -->
+        <div class="stopped">
+            <h2 id="stopped-title">Stopped Services</h2>
+            <br>
+            <br>
+            <div id="stopped-services"></div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+scripts.js:
+// Navigate to a specified page.
+function navigateTo(page) {
+  window.location.href = page;
+}
+
+// Function to extract DC / Domain from server name
+function extractInfoFromFQDN(serverName) {
+  const domainParts = serverName.split(".");
+  const baseServerName = domainParts[0]; // e.g., dc1-stw-foc1
+  const dc = baseServerName.match(/dc(\d+)/i)?.[1] || "Unknown"; // Extract DC number (e.g., 1)
+  const fullDomain = domainParts.slice(1).join(".").toUpperCase(); // e.g., CBS.SITE
+  return { dc, fullDomain, baseServerName };
+}
+
+// Function to format timestamp as DD-MM-YYYY
+function formatTimestamp() {
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, "0");
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const year = now.getFullYear();
+  const time = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  return `${day}-${month}-${year} at ${time}`;
+}
+
+// Fetch and display services for the current application
+function fetchServices() {
+  fetch("../data/allserversdata.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const runningContainer = document.getElementById("running-services");
+      const stoppedContainer = document.getElementById("stopped-services");
+      const runningTitle = document.getElementById("running-title");
+      const stoppedTitle = document.getElementById("stopped-title");
+
+      runningContainer.innerHTML = "";
+      stoppedContainer.innerHTML = "";
+
+      const appName = window.location.pathname
+        .split("/")
+        .pop()
+        .replace(".html", "");
+
+      const appData = data.filter(
+        (item) => item.Application.toLowerCase() === appName.toLowerCase()
+      );
+
+      const servers = [...new Set(appData.map((item) => item.ServerName))];
+
+      servers.forEach((server) => {
+        const { dc, fullDomain, baseServerName } = extractInfoFromFQDN(server);
+        const serverData = appData.filter((item) => item.ServerName === server);
+
+        const runningServices = serverData.filter(
+          (item) => item.Status === "Running"
+        );
+        if (runningServices.length > 0) {
+          const runningSection = document.createElement("div");
+          runningSection.className = "server-section";
+          runningSection.innerHTML = `
+                    <div class="service-card">
+    <table>
+    
+        <tr>
+        
+            <td><strong>DC / Domain</strong></td>
+            <td>:</td>
+            <td>${dc}</td>
+            <td>${fullDomain}</td>
+        </tr>
+        <tr>
+            <td><strong>Server</td>
+            <td>:</td>
+            <td colspan="2">${baseServerName}</td>
+        </tr>
+        <tr class="spacer-row"><td colspan="4"></td></tr>
+        ${runningServices
+          .map(
+            (service) => `
+                        <tr>
+                    <td>${service.ServiceName}</td>
+                    <td>:</td>
+                    <td colspan="2">${service.Status}</td>
+                </tr>
+
+            `
+          )
+          .join("")}
+    </table>
+</div>
+
+                    `;
+          runningContainer.appendChild(runningSection);
+        }
+
+        const stoppedServices = serverData.filter(
+          (item) => item.Status === "Stopped"
+        );
+        if (stoppedServices.length > 0) {
+          const stoppedSection = document.createElement("div");
+          stoppedSection.className = "server-section stopped";
+          stoppedSection.innerHTML = `
+  <div class="service-card">
+    <table>
+        <tr>
+            <td><strong>DC / Domain</strong></td>
+            <td>:</td>
+            <td>${dc}</td>
+            <td>${fullDomain}</td>
+        </tr>
+        <tr>
+            <td><strong>Server</strong></td>
+            <td>:</td>
+            <td colspan="2">${baseServerName}<br></td>
+        </tr>
+        <tr class="spacer-row"><td colspan="4"></td></tr>
+        ${stoppedServices
+          .map(
+            (service) => `
+                <tr>
+                    <td>${service.ServiceName}</td>
+                    <td>:</td>
+                    <td colspan="2">${service.Status}</td>
+                </tr>
+            `
+          )
+          .join("")}
+    </table>
+</div>                           
+                    `;
+          stoppedContainer.appendChild(stoppedSection);
+        }
+      });
+
+      // Update Header with timestamps
+      const timestamp = formatTimestamp();
+      runningTitle.innerHTML = `Running Services <small>(Updated ${timestamp})</small>`;
+      stoppedTitle.innerHTML = `Stopped Services <small>(Updated ${timestamp})</small>`;
+    })
+    .catch((error) => console.error("Error fetching services:", error));
+}
+
+// Fetch data immediately and refresh every 5 minutes
+if (
+  document.getElementById("running-services") &&
+  document.getElementById("stopped-services")
+) {
+  fetchServices();
+  setInterval(fetchServices, 300000);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ps1 script:
+# Define services for each application
+$services = @{
+    "Focus" = @("W3SVC", "IIS", "IISADMIN")
+    "G360_Web" = @("G360PA-BANTEC_IN_PA", "G360PA-BANTEC_PROC_PA", "G360PA-CACHECLEAR", "G360PA-WAPA", "G360PA-WFSERVE")
+    "G360_App_Net" = @("W3SVC", "MSMQ")
+    "Sales" = @("CbsHubQueueListenerService", "DirectMailingListenerService", "W3SVC")
+    "2FA" = @("W3SVC", "IISADMIN")
+    "MSO" = @("MSOChaseSubsystem", "MSOCreditDecisionDE", "OperationalReportingPurgeWorkerService")
+}
+
+# Define servers for each application (with FQDNs)
+$servers = @{
+    "Focus" = @("dc1-stw-foc1.cbs.site", "dc1-stw-foc2.cbs-dtt.site", "dc2-stw-foc1.cbs.site", "dc2-stw-foc2.cbs-dtt.site")
+    "G360_Web" = @("dc1-stw-g360web1.cbs.site", "dc2-stw-g360web2.cbs-dtt.site")
+    "G360_App_Net" = @("dc1-stw-g360app1.cbs.site", "dc2-stw-g360app2.cbs-dtt.site")
+    "Sales" = @("dc1-stw-sales1.cbs.site", "dc2-stw-sales2.cbs-dtt.site")
+    "2FA" = @("dc1-stw-2fa1.cbs.site", "dc2-stw-2fa2.cbs-dtt.site")
+    "MSO" = @("dc1-stw-mso1.cbs.site", "dc2-stw-mso2.cbs-dtt.site")
+}
+
+# Output path for the JSON file
+$outputPath = "C:\inetpub\wwwroot\data\allserversdata.json"
+
+# Initialize an array to store all service data
+$data = @()
+
+# Loop through each application, server, and service
+foreach ($app in $services.Keys) {
+    foreach ($server in $servers[$app]) {
+        foreach ($service in $services[$app]) {
+            try {
+                # Fetch service status
+                $svc = Get-Service -ComputerName ($server.Split(".")[0]) -Name $service -ErrorAction Stop
+                $data += @{
+                    Application = $app
+                    ServerName  = $server
+                    ServiceName = $svc.DisplayName
+                    Status      = $svc.Status
+                }
+            } catch {
+                # If the service is not found or there's an error
+                $data += @{
+                    Application = $app
+                    ServerName  = $server
+                    ServiceName = $service
+                    Status      = "An error has occured"
+                }
+            }
+        }
+    }
+}
+
+# Export the data to JSON format
+$data | ConvertTo-Json -Depth 2 | Set-Content -Path $outputPath
+
+# Output a success message
+Write-Host "Service status data has been written to $outputPath"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+json:
+[
+    {
+        "Application": "Focus",
+        "ServerName": "dc1-stw-foc1.cbs.site",
+        "ServiceName": "W3SVC",
+        "Status": "Running"
+    },
+    {
+        "Application": "Focus",
+        "ServerName": "dc1-stw-foc1.cbs.site",
+        "ServiceName": "IIS",
+        "Status": "Running"
+    },
+    {
+        "Application": "Focus",
+        "ServerName": "dc1-stw-foc2.cbs.site",
+        "ServiceName": "IIS",
+        "Status": "Running"
+    },
+    
+    {
+        "Application": "Focus",
+        "ServerName": "dc2-stw-foc1.cbs-dtt.site",
+        "ServiceName": "IIS",
+        "Status": "Stopped"
+    },
+    {
+        "Application": "Focus",
+        "ServerName": "dc2-stw-foc2.cbs.site",
+        "ServiceName": "IIS",
+        "Status": "Stopped"
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
